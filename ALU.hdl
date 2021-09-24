@@ -1,5 +1,5 @@
 CHIP ALU 
-{
+{   //ok
 
     IN x[8],y[8],c[3];
     OUT out[8],overflow;
