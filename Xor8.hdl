@@ -1,4 +1,4 @@
-CHIP Or8//Bit wise XOR
+CHIP Xor8//Bit wise OR
 {
     IN x[8],y[8];
     OUT z[8];
@@ -12,5 +12,5 @@ CHIP Or8//Bit wise XOR
     Xor(a=x[4],b=y[4],out=z[4]);
     Xor(a=x[5],b=y[5],out=z[5]);
     Xor(a=x[6],b=y[6],out=z[6]);
-    Xor(a=x[7],b=y[7],out=z[7]);
+    Xor(a=x[7],b=y[7],out=z[7]);    
 }
