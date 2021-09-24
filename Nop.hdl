@@ -1,0 +1,17 @@
+CHIP Nop
+{
+    IN x[8] , y[8] ;
+    OUT z[8];
+
+    PARTS:
+
+    Not(in=true, out=z[0]);
+    Not(in=true, out=z[1]);
+    Not(in=true, out=z[2]);
+    Not(in=true, out=z[3]);
+    Not(in=true, out=z[4]);
+    Not(in=true, out=z[5]);
+    Not(in=true, out=z[6]);
+    Not(in=true, out=z[7]);
+
+}
