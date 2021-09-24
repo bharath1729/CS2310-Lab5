@@ -1,0 +1,34 @@
+/ USING EVEN PARITY SCHEME CONCEPT
+CHIP comparator
+{
+ 
+  IN x[9] ,y[8];
+  OUT z;
+
+  PARTS:
+
+  // input1
+  Xor(a=x[0], b=[x1], out=m0);
+  Xor(a=x[2], b=[x3], out=m1);
+  Xor(a=x[4], b=[x5], out=m2);
+  Xor(a=x[6], b=[x7], out=m3);
+  
+  Xor(a=m0, b=m1, out=n0);
+  Xor(a=m2, b=m3, out=n1);
+
+  Xor(a=n0, b=n1, out=p0); // parity1
+  
+  // input2
+  Xor(a=y[0], b=y[1], out=r0);
+  Xor(a=y[2], b=y[3], out=r1);
+  Xor(a=y[4], b=y[5], out=r2);
+  Xor(a=y[6], b=y[7], out=r3);
+  
+  Xor(a=r0, b=r1, out=s0);
+  Xor(a=r2, b=r3, out=s1);
+
+  Xor(a=s0, b=s1, out=p1); // parity2
+  
+  Xor(a=p0, b=p1, out=z);
+  
+}
