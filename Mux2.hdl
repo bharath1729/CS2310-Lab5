@@ -1,0 +1,49 @@
+CHIP Mux2 {
+
+    IN a[8],b[8],x;
+    OUT out[8];
+    PARTS:
+
+    Not(in=x, out=x1);
+
+    And(a=x1, b=a[0], out=l00);
+    And(a=x, b=b[0], out=l01);
+
+    Or(a=l00, b=l01, out=out[0]);
+    //
+    And(a=x1, b=a[1], out=l10);
+    And(a=x, b=b[1], out=l11);
+
+    Or(a=l10, b=l11, out=out[1]);
+    //
+    And(a=x1, b=a[2], out=l20);
+    And(a=x, b=b[2], out=l21);
+
+    Or(a=l20, b=l21, out=out[2]);
+    //
+    And(a=x1, b=a[3], out=l30);
+    And(a=x, b=b[3], out=l31);
+
+    Or(a=l30, b=l31, out=out[3]);
+    //
+    And(a=x1, b=a[4], out=l40);
+    And(a=x, b=b[4], out=l41);
+
+    Or(a=l40, b=l41, out=out[4]);
+    //
+    And(a=x1, b=a[5], out=l50);
+    And(a=x, b=b[5], out=l51);
+
+    Or(a=l50, b=l51, out=out[5]);
+    //
+    And(a=x1, b=a[6], out=l60);
+    And(a=x, b=b[6], out=l61);
+
+    Or(a=l60, b=l61, out=out[6]);
+    //
+    And(a=x1, b=a[7], out=l70);
+    And(a=x, b=b[7], out=l71);
+
+    Or(a=l70, b=l71, out=out[7]);
+       
+}

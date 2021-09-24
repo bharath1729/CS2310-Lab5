@@ -1,0 +1,73 @@
+CHIP Mux {
+
+    IN a[8],b[8],c[8],d[8],x[2];
+    OUT out[8];
+    PARTS:
+
+    Not(in=x[0], out=x01);
+    Not(in=x[1], out=x11);
+
+    And(a=x11, b=x01, out=l0);
+    And(a=x11, b=x[0], out=l1);
+    And(a=x[1], b=x01, out=l2);
+    And(a=x[1], b=x[0], out=l3);
+      //
+      And(a=l0, b=a[0], out=k00);
+      And(a=l1, b=b[0], out=k01);
+      And(a=l2, b=c[0], out=k02);
+      And(a=l3, b=d[0], out=k03);
+  
+      or4(a=k00,b=k01,c=k02,d=k03,out=out[0]);
+
+    //
+    And(a=l0, b=a[1], out=k10);
+    And(a=l1, b=b[1], out=k11);
+    And(a=l2, b=c[1], out=k12);
+    And(a=l3, b=d[1], out=k13);
+
+    or4(a=k10,b=k11,c=k12,d=k13,out=out[1]);
+     //
+     And(a=l0, b=a[2], out=k20);
+     And(a=l1, b=b[2], out=k21);
+     And(a=l2, b=c[2], out=k22);
+     And(a=l3, b=d[2], out=k23);
+ 
+     or4(a=k20,b=k21,c=k22,d=k23,out=out[2]);
+      //
+    And(a=l0, b=a[3], out=k30);
+    And(a=l1, b=b[3], out=k31);
+    And(a=l2, b=c[3], out=k32);
+    And(a=l3, b=d[3], out=k33);
+
+    or4(a=k30,b=k31,c=k32,d=k33,out=out[3]);
+     //
+     And(a=l0, b=a[4], out=k40);
+     And(a=l1, b=b[4], out=k41);
+     And(a=l2, b=c[4], out=k42);
+     And(a=l3, b=d[4], out=k43);
+ 
+     or4(a=k40,b=k41,c=k42,d=k43,out=out[4]);
+      //
+    And(a=l0, b=a[5]], out=k50);
+    And(a=l1, b=b[5]], out=k51);
+    And(a=l2, b=c[5]], out=k52);
+    And(a=l3, b=d[5]], out=k53);
+
+    or4(a=k50,b=k51,c=k52,d=k53,out=out[5]);
+      //
+      And(a=l0, b=a[6], out=k60);
+      And(a=l1, b=b[6], out=k61);
+      And(a=l2, b=c[6], out=k62);
+      And(a=l3, b=d[6], out=k63);
+  
+      or4(a=k60,b=k61,c=k62,d=k63,out=out[6]);
+
+        //
+    And(a=l0, b=a[7], out=k70);
+    And(a=l1, b=b[7], out=k71);
+    And(a=l2, b=c[7], out=k72);
+    And(a=l3, b=d[7], out=k73);
+
+    or4(a=k70,b=k71,c=k72,d=k73,out=out[7]);
+       
+}
