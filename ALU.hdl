@@ -9,5 +9,4 @@ CHIP ALU
     Mux2(a=j1,b=j2,x=c[2],out=out);
     
     comparator (x= x , y=y , z= equality);
-    
 }
