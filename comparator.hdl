@@ -1,34 +1,41 @@
-/ USING EVEN PARITY SCHEME CONCEPT
-CHIP comparator
+
+
+
+CHIP comparator  // returns 1 if both numbers are same else 0
 {
- 
-  IN x[9] ,y[8];
-  OUT z;
+    IN x[8], y[8];
+    OUT z;
 
-  PARTS:
+    PARTS:
+    
+    // doing XOR of each coressponding bits
+    Xor(a=x[0], b=y[0], out=l0);
+    Not(in=l0, out=t0);
+    Xor(a=x[1], b=y[1], out=l1);
+    Not(in=l1, out=t1);
+    Xor(a=x[2], b=y[2], out=l2);
+    Not(in=l2, out=t2);   
+    Xor(a=x[3], b=y[3], out=l3);
+    Not(in=l3, out=t3);
+    Xor(a=x[4], b=y[4], out=l4);
+    Not(in=l4, out=t4);    
+    Xor(a=x[5], b=y[5], out=l5);
+    Not(in=l5, out=t5);    
+    Xor(a=x[6], b=y[6], out=l6);
+    Not(in=l6, out=t6);    
+    Xor(a=x[7], b=y[7], out=l7);
+    Not(in=l7, out=t7);
+    
+    
+    And(a=t0, b=t1, out=m0);
+    And(a=t2, b=t3, out=m1);
+    And(a=t4, b=t5, out=m2);
+    And(a=t6, b=t7, out=m3);
 
-  // input1
-  Xor(a=x[0], b=[x1], out=m0);
-  Xor(a=x[2], b=[x3], out=m1);
-  Xor(a=x[4], b=[x5], out=m2);
-  Xor(a=x[6], b=[x7], out=m3);
-  
-  Xor(a=m0, b=m1, out=n0);
-  Xor(a=m2, b=m3, out=n1);
+    And(a=m0, b=m1, out=n0);
+    And(a=m2, b=m3, out=n1);
 
-  Xor(a=n0, b=n1, out=p0); // parity1
-  
-  // input2
-  Xor(a=y[0], b=y[1], out=r0);
-  Xor(a=y[2], b=y[3], out=r1);
-  Xor(a=y[4], b=y[5], out=r2);
-  Xor(a=y[6], b=y[7], out=r3);
-  
-  Xor(a=r0, b=r1, out=s0);
-  Xor(a=r2, b=r3, out=s1);
+    And(a=n0, b=n1, out=z);
 
-  Xor(a=s0, b=s1, out=p1); // parity2
-  
-  Xor(a=p0, b=p1, out=z);
-  
+
 }
