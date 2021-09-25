@@ -1,0 +1,28 @@
+CHIP sumOFnot  // gives OR of negations of Pn-1, Pn ... P2n-1
+{
+    IN a[16];
+    OUT out;
+
+    PARTS:
+    
+    // finding negations
+    Not(in=a[8], out=b8);
+    Not(in=a[9], out=b9);
+    Not(in=a[10], out=b10);
+    Not(in=a[11], out=b11);
+    Not(in=a[12], out=b12);
+    Not(in=a[13], out=b13);
+    Not(in=a[14], out=b14);
+    Not(in=a[15], out=b15);
+    
+    // doing XOR of all negations
+    Or(a=b8, b=b9, out=c0);
+    Or(a=b10, b=b11, out=c1);
+    Or(a=b12, b=b13, out=c2);
+    Or(a=b14, b=b15, out=c3);
+    
+    Or(a=c0, b=c1, out=x0);
+    Or(a=c2, b=c3, out=x1);
+
+    Or(a=x0, b=x1, out=out);
+}

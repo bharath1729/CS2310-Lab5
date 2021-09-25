@@ -1,0 +1,41 @@
+CHIP WtreeUnsigned
+{
+    IN a[8],b[8];
+    OUT out[8],of;
+
+    PARTS:
+    
+    //generating partial products - Lvl 0
+    PPunsign0(a=a , b= b[0] , pp = pp0);  // multipying each bit of a with b[0] to produce the partial products
+    PPunsign1(a=a , b= b[1] , pp = pp1);  // multipying each bit of a with b[1] to produce the partial products
+    PPunsign2(a=a , b= b[2] , pp = pp2);  // multipying each bit of a with b[2] to produce the partial products
+    PPunsign3(a=a , b= b[3] , pp = pp3);  // multipying each bit of a with b[3] to produce the partial products
+    PPunsign4(a=a , b= b[4] , pp = pp4);  // multipying each bit of a with b[4] to produce the partial products
+    PPunsign5(a=a , b= b[5] , pp = pp5);  // multipying each bit of a with b[5] to produce the partial products
+    PPunsign6(a=a , b= b[6] , pp = pp6);  // multipying each bit of a with b[6] to produce the partial products
+    PPunsign7(a=a , b= b[7] , pp = pp7);  // multipying each bit of a with b[7] to produce the partial products
+
+    // Lvl 1
+    deducer(a=pp0 , b=pp1 , c=pp2 , s=s10 , d=c10);
+    deducer(a=pp3 , b=pp4 , c=pp5 , s=s11 , d=c11);
+    
+    //Lvl 2
+    deducer(a=c10 , b=s10 , c=c11 , s=s20 , d=c20);
+    deducer(a=pp6 , b=pp7 , c=s11 , s=s21 , d=c21);
+    
+    //Lvl 3
+    deducer(a=c20 , b=s20 , c=c21 , s=s30 , d=c30);
+    
+    // Lvl 4
+    deducer(a=c30 , b=s30 , c=s21 , s=s40 , d=c40);
+
+    // using carry look ahead with higher propogate
+    cla(x=c40 , y=s40 , as=false , s= out0);
+     
+    // cutter chip uses first 8 bibts of produced sum to calculate answer and gives us sum of the later 8 bits to calculate overflow
+    cutter(a=out0 , b= out , ofTemp=of ) ;
+
+    
+
+    
+}

@@ -1,0 +1,27 @@
+CHIP PPunsign4
+{
+    IN a[8],b;
+    OUT pp[16];
+
+    PARTS:
+
+    // producing partial product of x and y[4]
+    And(a=a[0], b=b, out=pp[4]);
+    And(a=a[1], b=b, out=pp[5]);
+    And(a=a[2], b=b, out=pp[6]);
+    And(a=a[3], b=b, out=pp[7]);
+    And(a=a[4], b=b, out=pp[8]);
+    And(a=a[5], b=b, out=pp[9]);
+    And(a=a[6], b=b, out=pp[10]);
+    And(a=a[7], b=b, out=pp[11]);
+
+    And(a=a[7], b=false, out=pp[0]);
+    And(a=a[7], b=false, out=pp[1]);
+    And(a=a[7], b=false, out=pp[2]);
+    And(a=a[7], b=false, out=pp[3]);
+    And(a=a[7], b=false, out=pp[12]);
+    And(a=a[7], b=false, out=pp[13]);
+    And(a=a[7], b=false, out=pp[14]);
+    And(a=a[7], b=false, out=pp[15]);
+
+}

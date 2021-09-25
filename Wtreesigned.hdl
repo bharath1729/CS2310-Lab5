@@ -1,0 +1,50 @@
+CHIP Wtreesigned
+
+{
+    IN a[8],b[8];
+    OUT out[8],of;
+
+    PARTS:
+    
+    //generating partial products - Lvl 0
+    PPsign0(a=a , b= b[0] , pp = pp0);  // 
+    PPsign1(a=a , b= b[1] , pp = pp1);  // 
+    PPsign2(a=a , b= b[2] , pp = pp2);  // 
+    PPsign3(a=a , b= b[3] , pp = pp3);  // 
+    PPsign4(a=a , b= b[4] , pp = pp4);  // 
+    PPsign5(a=a , b= b[5] , pp = pp5);  // 
+    PPsign6(a=a , b= b[6] , pp = pp6);  // 
+    PPsign7(a=a , b= b[7] , pp = pp7);    // the signed integer multiplication sing wallace tree differs from unsigned in generating PP7 to produce appropriate bus to also take into acount the negative numbers
+
+    // Lvl 1
+    deducer(a=pp0 , b=pp1 , c=pp2 , s=s10 , d=c10);
+    deducer(a=pp3 , b=pp4 , c=pp5 , s=s11 , d=c11);
+    
+    //Lvl 2
+    deducer(a=c10 , b=s10 , c=c11 , s=s20 , d=c20);
+    deducer(a=pp6 , b=pp7 , c=s11 , s=s21 , d=c21);
+    
+    //Lvl 3
+    deducer(a=c20 , b=s20 , c=c21 , s=s30 , d=c30);
+    
+    // Lvl 4
+    deducer(a=c30 , b=s30 , c=s21 , s=s40 , d=c40);
+
+    // using carry look ahead with higher propogate
+    cla(x=c40 , y=s40 , as=false , s= out0);
+    
+    // cutter chip uses first 8 bibts of produced sum to calculate answer and gives us sum of the later 8 bits to calculate overflow
+    cutter(a=out0 , b= out , ofTemp=x1 ) ;
+    // OR of negations of Pn-1, Pn ... P2n-1 is given by the cutter chip
+    sumOFnot(a=out0 , out=x2);
+
+    Xor(a=a[7], b=b[7], out=p);
+    Not(in=p, out=p1);
+    
+    And(a=p1, b=x1, out=k);
+    And(a=p, b=x2, out=k1);
+
+    Or(a=k, b=k1, out=of);  // overflow for signed
+ 
+    
+}

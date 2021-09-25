@@ -1,0 +1,9 @@
+CHIP fun // to find XOR of 3 bits
+{
+    IN x,y,z;
+    OUT out;
+
+    PARTS:
+    Xor(a=x,b=y,out=t);
+    Xor(a=t,b=z,out=out);
+}

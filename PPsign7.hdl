@@ -1,0 +1,65 @@
+CHIP PPsign7
+{
+    IN a[8], b ;
+
+    OUT pp[16];
+
+    PARTS:
+    
+    // finding product of x and y[7]
+    And(a=a[0], b=b, out=temp7);
+    And(a=a[1], b=b, out=temp8);
+    And(a=a[2], b=b, out=temp9);
+    And(a=a[3], b=b, out=temp10);
+    And(a=a[4], b=b, out=temp11);
+    And(a=a[5], b=b, out=temp12);
+    And(a=a[6], b=b, out=temp13);
+    And(a=a[7], b=b, out=temp14);
+
+    And(a=a[7], b=false, out=temp0);
+    And(a=a[7], b=false, out=temp1);
+    And(a=a[7], b=false, out=temp2);
+    And(a=a[7], b=false, out=temp3);
+    And(a=a[7], b=false, out=temp4);
+    And(a=a[7], b=false, out=temp5);
+    And(a=a[7], b=false, out=temp6);
+    And(a=a[7], b=false, out=temp15);
+
+    // using XOR gate to produce 1s compliment incase y[7] is '1'
+    Xor(a=temp0, b=b, out=x0);
+    Xor(a=temp1, b=b, out=x1);
+    Xor(a=temp2, b=b, out=x2);
+    Xor(a=temp3, b=b, out=x3);
+    Xor(a=temp4, b=b, out=x4);
+    Xor(a=temp5, b=b, out=x5);
+    Xor(a=temp6, b=b, out=x6);
+    Xor(a=temp7, b=b, out=x7);
+    Xor(a=temp8, b=b, out=x8);
+    Xor(a=temp9, b=b, out=x9);
+    Xor(a=temp10, b=b, out=x10);
+    Xor(a=temp11, b=b, out=x11);
+    Xor(a=temp12, b=b, out=x12);
+    Xor(a=temp13, b=b, out=x13);
+    Xor(a=temp14, b=b, out=x14);
+    Xor(a=temp15, b=b, out=x15);
+    
+    // adding '1' to produce 2's compliment
+    HalfAdder(a=x0, b=b, sum=pp[0], carry=c1);
+    HalfAdder(a=x1, b=c1, sum=pp[1], carry=c2);
+    HalfAdder(a=x2, b=c2, sum=pp[2], carry=c3);
+    HalfAdder(a=x3, b=c3, sum=pp[3], carry=c4);
+    HalfAdder(a=x4, b=c4, sum=pp[4], carry=c5);
+    HalfAdder(a=x5, b=c5, sum=pp[5], carry=c6);
+    HalfAdder(a=x6, b=c6, sum=pp[6], carry=c7);
+    HalfAdder(a=x7, b=c7, sum=pp[7], carry=c8);
+    HalfAdder(a=x8, b=c8, sum=pp[8], carry=c9);
+    HalfAdder(a=x9, b=c9, sum=pp[9], carry=c10);
+    HalfAdder(a=x10, b=c10, sum=pp[10], carry=c11);
+    HalfAdder(a=x11, b=c11, sum=pp[11], carry=c12);
+    HalfAdder(a=x12, b=c12, sum=pp[12], carry=c13);
+    HalfAdder(a=x13, b=c13, sum=pp[13], carry=c14);
+    HalfAdder(a=x14, b=c14, sum=pp[14], carry=c15);
+    HalfAdder(a=x15, b=c15, sum=pp[15], carry=c16);
+        
+    
+}
