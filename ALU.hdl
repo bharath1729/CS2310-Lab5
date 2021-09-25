@@ -12,8 +12,12 @@ CHIP ALU
     Or8 (x=x, y=y , z=i2);
     Xor8 (x=x, y=y , z=i3);
 
-    Adder(x=x , y=y , as = false , s=i4 , overflow=of0);
-    Adder(x=x , y=y , as = true , s=i5 , overflow=of1);
+    AdderSigned(x=x , y=y , as = false , s=i4 , overflowS=of00 , overflowUS = of01);
+    AdderSigned(x=x , y=y , as = true , s=i5 , overflowS=of10 , overflowUS = of11);
+    Or(a=of00, b=of10, out=ofsas);
+    Or(a=of10, b=of11, out=ofusas);
+    
+    
 
     Wtreesigned(a=x , b=y , out = i6 , of= of2);
     WtreeUnsigned(a=x , b=y , out = i7 , of= of3);
@@ -22,5 +26,5 @@ CHIP ALU
     Mux(a=i4,b=i5,c=i6,d=i7,x0=c[0],x1=c[1],out=j2);
     Mux2(a=j1,b=j2,x=c[2],out=out);
     
-    or4(a=of0 , b=of1 , c=of2 , d=of3 , out = overflow);
+    
 }

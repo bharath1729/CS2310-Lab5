@@ -1,7 +1,7 @@
 CHIP Adder
 {
     IN x[8],y[8],as ;
-    OUT s[8],overflow;
+    OUT s[8],overflowS, overflowUS;
 
     PARTS:
 // to set up for add or subtract
@@ -100,11 +100,9 @@ CHIP Adder
 
 //
 //over flow
-    Xor(a=c7,b=c8,out=of0);
-    Xor(a=c7, b=as, out=of1);
+    Xor(a=c7,b=c8,out=overflowS);
 
-    Or(a=of0, b=of1, out=overflow);
-    
+    Xor(a=c7, b=as, out=overflowUS);
     
         
 
