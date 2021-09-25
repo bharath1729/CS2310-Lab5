@@ -19,8 +19,8 @@ CHIP ALU
     
     
 
-    Wtreesigned(a=x , b=y , out = i6 , of= of2);
-    WtreeUnsigned(a=x , b=y , out = i7 , of= of3);
+    Wtreesigned(a=x , b=y , out = i6 , of= ofsm);
+    WtreeUnsigned(a=x , b=y , out = i7 , of= ofum);
     
     Mux(a=i0,b=i1,c=i2,d=i3,x0=c[0],x1=c[1],out=j1);
     Mux(a=i4,b=i5,c=i6,d=i7,x0=c[0],x1=c[1],out=j2);
