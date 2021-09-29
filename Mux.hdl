@@ -1,6 +1,6 @@
 CHIP Mux {
 
-    IN a[8],b[8],c[8],d[8],x0,x1;
+    IN a[8],b[8],c[8],d[8],x0,x1;  // 8bit 4-1 mux
     OUT out[8];
     PARTS:
 

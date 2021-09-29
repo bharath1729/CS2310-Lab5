@@ -1,4 +1,5 @@
-CHIP Xor3
+CHIP Xor3   // XOR of 3 bits
+
 {
     IN x,y,z;
     OUT out;

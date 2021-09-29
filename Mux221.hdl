@@ -1,4 +1,4 @@
-CHIP Mux221
+CHIP Mux221  // i bit 2-1 mux
 {
 
     IN a,b,x;

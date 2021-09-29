@@ -1,6 +1,6 @@
 CHIP Nop
-{
-    IN x[8] , y[8] ;
+{    
+    IN x[8] , y[8] ;   // No operation chip to give output as zero
     OUT z[8];
 
     PARTS:

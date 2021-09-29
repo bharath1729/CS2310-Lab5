@@ -1,4 +1,4 @@
-CHIP And4
+CHIP And4  // And of 4 bits
 {
     IN a,b,c,d;
     OUT out;

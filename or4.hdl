@@ -1,4 +1,4 @@
-CHIP or4 {
+CHIP or4 {  // OR operation of 4 bits
 
     IN a,b,c,d;
     OUT out;

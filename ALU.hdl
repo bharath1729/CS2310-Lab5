@@ -8,30 +8,26 @@ CHIP ALU
 
     Nop(x=x , y=y, z=i0);
 
-    And8 (x=x, y=y , z=i1);
-    Or8 (x=x, y=y , z=i2);
-    Xor8 (x=x, y=y , z=i3);
+    And8 (x=x, y=y , z=i1);  // Bitwise AND
+    Or8 (x=x, y=y , z=i2);   // Bitwise OR
+    Xor8 (x=x, y=y , z=i3);  // Bitwise XOR
 
-    AdderS(x=x , y=y , as = false , s=i4 , overflowS=of00 , overflowUS = of01);
-    AdderS(x=x , y=y , as = true , s=i5 , overflowS=of10 , overflowUS = of11);
-    Or(a=of00, b=of10, out=ofsas);
-    Or(a=of01, b=of11, out=ofusas);
+    AdderS(x=x , y=y , as = false , s=i4 , overflowS=of00 , overflowUS = of01); // Adder
+    AdderS(x=x , y=y , as = true , s=i5 , overflowS=of10 , overflowUS = of11);  // Subtractor
+    Mux221(a=of01, b=of00, x= us , out=of0);
+    Mux221(a=of11, b=of10, x= us , out=of1);
     
     
 
-    Wtreesigned(a=x , b=y , out = i6 , of= of3);
-    WtreeUnsigned(a=x , b=y , out = i7 , of= of2);
+    Wtreesigned(a=x , b=y , out = i6 , of= of3);  // signed multipilication using wallace
+    WtreeUnsigned(a=x , b=y , out = i7 , of= of2); // unsigned multipilication using wallace
     
     Mux(a=i0,b=i1,c=i2,d=i3,x0=c[0],x1=c[1],out=j1);
     Mux(a=i4,b=i5,c=i6,d=i7,x0=c[0],x1=c[1],out=j2);
     Mux2(a=j1,b=j2,x=c[2],out=out);
 
-    Not(in=us, out=us1);
-
-    Xor(a=us1, b=ofusas, out=of0);
-    Xor(a=us, b=ofsas, out=of1);
     
-    Mux41(a=of0,b=of1,c=of2,d=of3,x0=c[0],x1=c[1],out=t1);
+    Mux41(a=of0,b=of1,c=of2,d=of3,x0=c[0],x1=c[1],out=t1);  // calculating overflows
     Mux221(a=false,b=t1,x=c[2],out=overflow);
     
     

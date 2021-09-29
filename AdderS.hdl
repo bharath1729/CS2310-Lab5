@@ -102,7 +102,7 @@ CHIP AdderS
 //over flow
     Xor(a=c7,b=c8,out=overflowS);
 
-    Xor(a=c7, b=as, out=overflowUS);
+    Xor(a=c8, b=as, out=overflowUS);
     
         
 
