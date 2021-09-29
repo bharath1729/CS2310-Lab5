@@ -15,7 +15,7 @@ CHIP ALU
     AdderSigned(x=x , y=y , as = false , s=i4 , overflowS=of00 , overflowUS = of01);
     AdderSigned(x=x , y=y , as = true , s=i5 , overflowS=of10 , overflowUS = of11);
     Or(a=of00, b=of10, out=ofsas);
-    Or(a=of10, b=of11, out=ofusas);
+    Or(a=of01, b=of11, out=ofusas);
     
     
 
