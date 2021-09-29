@@ -12,8 +12,8 @@ CHIP ALU
     Or8 (x=x, y=y , z=i2);
     Xor8 (x=x, y=y , z=i3);
 
-    AdderSigned(x=x , y=y , as = false , s=i4 , overflowS=of00 , overflowUS = of01);
-    AdderSigned(x=x , y=y , as = true , s=i5 , overflowS=of10 , overflowUS = of11);
+    AdderS(x=x , y=y , as = false , s=i4 , overflowS=of00 , overflowUS = of01);
+    AdderS(x=x , y=y , as = true , s=i5 , overflowS=of10 , overflowUS = of11);
     Or(a=of00, b=of10, out=ofsas);
     Or(a=of01, b=of11, out=ofusas);
     
@@ -32,8 +32,8 @@ CHIP ALU
     Xor(a=us, b=ofsas, out=of1);
 
     
-    Mux(a=of0,b=of1,c=of2,d=of3,x0=c[0],x1=c[1],out=t1);
-    Mux2(a=false,b=t1,x=c[2],out=overflow);
+    1Mux(a=of0,b=of1,c=of2,d=of3,x0=c[0],x1=c[1],out=t1);
+    1Mux2(a=false,b=t1,x=c[2],out=overflow);
     
     
     
