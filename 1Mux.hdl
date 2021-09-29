@@ -1,0 +1,24 @@
+CHIP 1Mux
+{
+    IN a,b,c,d,x0,x1;
+    OUT out;
+
+    PARTS:
+
+    Not(in=x0, out=x01);
+    Not(in=x1, out=x11);
+
+    And(a=x11, b=x01, out=l0);
+    And(a=x11, b=x0, out=l1);
+    And(a=x1, b=x01, out=l2);
+    And(a=x1, b=x0, out=l3);
+      //
+      And(a=l0, b=a, out=k00);
+      And(a=l1, b=b, out=k01);
+      And(a=l2, b=c, out=k02);
+      And(a=l3, b=d, out=k03);
+  
+      or4(a=k00,b=k01,c=k02,d=k03,out=out[0]);
+
+    
+}

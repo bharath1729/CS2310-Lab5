@@ -1,4 +1,4 @@
-CHIP Adder
+CHIP AdderS
 {
     IN x[8],y[8],as ;
     OUT s[8],overflowS, overflowUS;
