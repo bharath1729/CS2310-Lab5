@@ -1,0 +1,12 @@
+CHIP Name {
+
+    IN a,b,x;
+    OUT out;
+    PARTS:
+    
+    Not(in=x, out=x1);
+    And(a=a, b=x1, out=i1);
+    And(a=b, b=x, out=i2);
+
+    Or(a=i1, b=i2, out=out);
+}
