@@ -1,4 +1,4 @@
-CHIP 1Mux
+CHIP Mux41
 {
     IN a,b,c,d,x0,x1;
     OUT out;

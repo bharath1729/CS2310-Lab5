@@ -30,10 +30,9 @@ CHIP ALU
 
     Xor(a=us1, b=ofusas, out=of0);
     Xor(a=us, b=ofsas, out=of1);
-
     
-    1Mux(a=of0,b=of1,c=of2,d=of3,x0=c[0],x1=c[1],out=t1);
-    1Mux2(a=false,b=t1,x=c[2],out=overflow);
+    Mux41(a=of0,b=of1,c=of2,d=of3,x0=c[0],x1=c[1],out=t1);
+    Mux221(a=false,b=t1,x=c[2],out=overflow);
     
     
     

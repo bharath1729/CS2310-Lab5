@@ -1,4 +1,5 @@
-CHIP Name {
+CHIP Mux221
+{
 
     IN a,b,x;
     OUT out;
